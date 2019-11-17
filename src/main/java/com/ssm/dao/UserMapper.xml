@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssm.dao.UserMapper">
+	<resultMap type="User" id="userMap">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="gender" column="gender" />
+		<result property="age" column="age" />
+	</resultMap>
+	
+	<select id="list" resultMap="userMap">
+		select id,name,gender,age
+		from student
+	</select>
+	<delete id="deleteById" parameterType="int">
+	    delete from student where id=#{id}
+	</delete>
+	<insert id="add" parameterType="User">
+	    insert into student(name,age,gender)
+	    values(#{name},#{age},#{gender})
+	</insert>
+</mapper>
+  
